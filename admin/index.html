@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="admin.css">
+  <link href='https://fonts.googleapis.com/css?family=Heebo' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="../assets/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<body>
+  <div class="all-navigation">
+    <!--Top Navigation Bar-->
+    <div class="topnav">
+    <ul>
+      <li style="margin-right: 50px; float:right;"><a href="#logout">Logout</a></li>
+      <li style="float:right;"><a href="#home">Home Page</a></li>
+      <li style="float:right;"><a href="#noti" class="notification"><span><i class="material-icons" style="font-size: 28px;">notifications</i></span><span class="badge">&nbsp;</span></a></li>
+      <li style="float:left; margin-bottom: 0px;"><img class="logo" src="img/logo.png"></li>
+      <li style="float: left;"><a class="active">ADMIN PANEL</a></li>
+    </ul>
+    </div>
+    <!--Side Navigation Bar-->
+    <div class="sidenav">
+      <a href="#dashboard" onclick="return toggle('db')">Dashboard</a>
+      <a href="#ongoingtasks" onclick="return toggle('tasks')">Ongoing Tasks</a>
+      <a href="#addevent" onclick="return toggle('addevent')">Add Event</a>
+      <button class="dropdown-btn">Users
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-container">
+        <a href="#edit/removeuser" onclick="return toggle('eruser')">Edit/ Remove User</a>
+        <a href="#adduser" onclick="return toggle('auser')">Add User</a>
+      </div>
+      <button class="dropdown-btn">Manager
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-container">
+        <a href="#edit/removemanager" onclick="return toggle('ermanager')">Edit/ Remove Manager</a>
+        <a href="#addmanager" onclick="return toggle('amanager')">Add Manager</a>
+      </div>
+
+    </div>
+  </div>
+  
+  <div class="main">
+    <div id="pg">
+      <div id="db" class="pg" style="display: block; margin-right: 50px;">
+        &nbsp;
+        <h1 class="h1"> Dashboard </h1>
+        <div class="home-content" style="display: block;">
+          <div class="overview-boxes">
+            <div class="box">
+              <div class="right-side">
+                <div class="box-topic">Total Users</div>
+                <div class="number">4,876</div>
+                <div class="indicator">
+                  <i class="material-icons" style="font-size: 16px;">arrow_upward</i>
+                  <span class="text">Up from last month</span>
+                </div>
+              </div>
+              &ensp;
+              <i class="material-icons" style="font-size: 65px;">account_circle</i>
+            </div>
+            <div class="box">
+              <div class="right-side">
+                <div class="box-topic">Total Manager</div>
+                <div class="number">27</div>
+                <div class="indicator">
+                </div>
+              </div>
+              &emsp;
+              &nbsp;
+              
+              <i class="material-icons" style="font-size: 65px;">admin_panel_settings</i>
+            </div>
+            <div class="box">
+              <div class="right-side">
+                <div class="box-topic">Total Events</div>
+                <div class="number">784</div>
+                <div class="indicator">
+                </div>
+              </div>
+              &emsp;
+              &emsp;
+              <i class="material-icons" style="font-size: 65px;">event</i>
+            </div>
+            <div class="box">
+              <div class="right-side">
+                <div class="box-topic">Total Revenue</div>
+                <div class="number">&#8377;65,43,000</div>
+                <div class="indicator">
+                  <i class="material-icons" style="font-size: 16px;">trending_up</i>
+                  <span class="text">Positive Growth</span>
+                </div>
+              </div>
+              <i class="material-icons" style="font-size: 65px;">paid</i>
+            </div>
+          </div>
+          </div>
+        &nbsp;
+        &nbsp;
+        <table class="table table-dark table-hover">
+          <thead>
+              <tr>
+                  <th>UIN</th>
+                  <th>Username</th>
+                  <th>Type of Event</th>
+                  <th>Date of Event</th>
+                  <th>Manager</th>
+                  <th>Status</th>
+
+              </tr>
+          </thead>
+          <tbody id="events">
+              <tr>
+                  <td>0129</td>
+                  <td>Yatharth</td>
+                  <td>Wedding</td>
+                  <td>10/07/2022</td>
+                  <td>Abhijeet</td>
+                  <td>Ongoing</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+      <div id="tasks" class="pg" style="margin-right: 50px;">
+        &nbsp;
+        <h1 class="h1"> Ongoing Tasks</h1>
+        <table class="table table-dark table-hover">
+          <thead>
+            <th>User Name</th>
+            <th>Event Type</th>
+            <th>Contact Number</th>
+            <th>Event Manager</th>
+          </thead>
+          <tbody id="ongoing">
+            <tr>
+              <td>abc</td>
+              <td>Wedding</td>
+              <td>99999-77777</td>
+              <td>xyz</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="addevent" class="pg">
+        &nbsp;
+        <h1 class="h1"> Add Event </h1>&nbsp;
+              <form action="/action.php" id="regform">
+    
+              <label for="name" class="label">User's Full Name: </label><br>
+              <input id="name" type="text" class="input" name ="name"><br>
+        
+              <label for="contact" class="label">Contact Number: </label><br>
+              <input id="contact" type="text" class="input" name ="contact"><br>
+        
+              <label for="event" class="label">Type of event: </label><br>
+              <select id="event" class="input" name="event">
+                  <option value="Wedding"> Wedding </option>
+                  <option value="Baby Showers">Baby Showers</option>
+                  <option value="Birthday Party">Birthday Party</option>
+                  <option value="Reunion"> Reunion </option>
+                </select><br>
+
+              <label for="City" class="label">Place of event: </label><br>
+              <select id="City" class="input" name="City">
+                  <option value="Ahemdabad"> Ahemdabad </option>
+                  <option value="Banglore">Banglore</option>
+                  <option value="Chennai">Chennai</option>
+                  <option value="Delhi"> Delhi </option>
+                </select><br>
+
+              <label for="Budget" class="label">Budget of event: </label><br>
+              <select name="Budget" class="input" id="Budget">
+                  <option value="25k">&#8377; 0 to 25,000 </option>
+                  <option value="50k">&#8377; 25,000 to 50,000 </option>
+                  <option value="150k">&#8377; 50,000 to 1,50,000 </option>
+                  <option value="300k">&#8377; 1,50,000 to 3,00,000 </option>
+                  <option value="lavish">&#8377; 3,00,000 and above </option>
+              </select><br>
+              <label for="guests" class="label">Number of guests: </label><br>
+              <select name="guests" class="input" id="guests">
+                  <option value="0-50 guests">0-50 guests</option>
+                  <option value="50-100 guests">50-100 guests</option>
+                  <option value="100-200 guests">100-200 guests</option>
+                  <option value="200-500 guests">200-500 guests</option>
+                  <option value="500-1000 guests">500-1000 guests</option>
+              </select><br>
+          
+              <label for="date" class="label">Date of Event: </label><br>
+              <input class="input" id="today" type="date" name="date"><br>
+          
+              <label for="specifics" class="label">Event specifications: </label><br>
+              <textarea class="input" id="specifics" form="regform" placeholder="Enter what else would you like in the event.."></textarea><br><br>
+          
+          
+              <input type="submit" class="button" value="Add Event"><br><br>
+          
+          </form>
+      </div>
+      <div id="eruser" class="pg" style="margin-right: 50px;">
+        &nbsp;
+        <h1 class="h1"> Edit/Remove User  </h1>
+        <table class="table table-dark table-hover">
+          <thead>
+            <th>Sr. No.</th>
+            <th>User Name</th>
+            <th>Email-Address</th>
+            <th>Contact Number</th>
+            <th>Password</th>
+            <th>Action</th>
+          </thead>
+          <tbody id="users">
+            <tr>
+              <td>1</td>
+              <td>abc</td>
+              <td>abc@gmail.com</td>
+              <td>99999-77777</td>
+              <td>xyz</td>
+              <td><button type="button" class="btn btn-info"><i class="material-icons" style="font-size: 14px;">edit</i></button>
+                <button type="button" class="btn btn-danger"><i class="material-icons" style="font-size: 14px;">delete</i></button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="auser" class="pg">
+        &nbsp;
+        <h1 class="h1"> Enter User details </h1>
+        <form action="#">
+          <label for="fname">First name:</label><br>
+          <input type="text" id="fname" name="fname" class="input"><br>
+          <label for="lname">Last name:</label><br>
+          <input type="text" id="lname" name="lname" class="input"><br>
+          <label for="email">Email:</label><br>
+          <input type="email" id="email" name="email" class="input"><br>
+          <label for="mobile">Mobile:</label><br>
+          <input type="tel" id="mobile" name="mobile" class="input"><br>
+          <label for="password">Password:</label><br>
+          <input type="password" id="pasword" name="password" class="input"><br><br>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+      <div id="ermanager" class="pg" style="margin-right: 50px;">
+        &nbsp;
+        <h1 class="h1"> Edit/Remove Manager </h1>
+        <table class="table table-dark table-hover">
+          <thead>
+            <th>Sr. No.</th>
+            <th>Manager Name</th>
+            <th>Manager Type</th>
+            <th>Contact Number</th>
+            <th>Password</th>
+            <th>Action</th>
+          </thead>
+          <tbody id="managers">
+            <tr>
+              <td>1</td>
+              <td>abc</td>
+              <td>Finance</td>
+              <td>99999-77777</td>
+              <td>xyz</td>
+              <td><button type="button" class="btn btn-info"><i class="material-icons" style="font-size: 14px;">edit</i></button>
+                <button type="button" class="btn btn-danger"><i class="material-icons" style="font-size: 14px;">delete</i></button></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <div id="amanager" class="pg">
+        &nbsp;
+        <h1 class="h1"> Enter manager details </h1>
+        <form action="#">
+          <label for="fname">First name:</label><br>
+          <input type="text" id="fname" name="fname" class="input"><br>
+          <label for="lname">Last name:</label><br>
+          <input type="text" id="lname" name="lname" class="input"><br>
+          <label for="Managertype">Manager Type:</label><br>
+          <input type="text" id="Managertype" name="Managertype" class="input"><br>
+          <label for="email">Email:</label><br>
+          <input type="email" id="email" name="email" class="input"><br>
+          <label for="mobile">Mobile:</label><br>
+          <input type="tel" id="mobile" name="mobile" class="input"><br>
+          <label for="password">Password:</label><br>
+          <input type="password" id="pasword" name="password" class="input"><br><br>
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <script>
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+        } else {
+          dropdownContent.style.display = "block";
+        }
+      });
+    }
+
+    /* To show content on click*/
+    function toggle(IDS) {
+      var sel = document.getElementById('pg').getElementsByTagName('div');
+      for (var i = 0; i < sel.length; i++) {
+        if (sel[i].id != IDS) { sel[i].style.display = 'none'; }
+      }
+      var status = document.getElementById(IDS).style.display;
+      if (status == 'block') { document.getElementById(IDS).style.display = 'none'; }
+      else { document.getElementById(IDS).style.display = 'block'; }
+      return false;
+    }
+  </script>
+
+</body>
+
+</html>

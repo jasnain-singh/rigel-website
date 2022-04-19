@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" type="text/css" href="manager.css">
+    <link href='https://fonts.googleapis.com/css?family=Heebo' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   </head>
+   <body>
+     <div class="all-navigation">
+      <!--Top Navigation Bar-->
+      <ul>
+        <li style="margin-right: 50px; float:right;"><a href="#logout">Logout</a></li>
+        <li style="float:right;"><a href="#home">Home Page</a></li>
+        <li style="float:left; margin-bottom: 0px;"><img class="logo" src="img/logo.png"></li>
+        <li style="float: left;"><a class="active">MANAGER PANEL</a></li>
+      </ul>
+      <!--Side Navigation Bar-->
+        <div class="sidenav">
+          <a href="#ongoingtasks" onclick="return toggle('tasks')">Ongoing Tasks</a>
+          <a href="#addevent" onclick="return toggle('addevent')">Add Event</a>
+          
+          <button class="dropdown-btn">Volunteers 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a href="#" onclick="return toggle('ervolun')">Edit/ Remove Volunteers</a>
+            <a href="#" onclick="return toggle('avolun')">Add Volunteers</a> 
+          </div>
+          
+        </div>
+          
+        
+
+      </ul>
+      </div>
+    </div>
+    <div class="main">
+      <div id="pg">
+        <div id="tasks" class="pg" style="display: block;"> <h1 class="h1"> AAAA page </h1> </div>
+        <div id="addevent" class="pg"> <h1 class="h1"> BBBB page </h1> </div>
+        <div id="ervolun" class="pg"> <h1 class="h1"> CCCC page </h1> </div>
+        <div id="avolun" class="pg"> <h1 class="h1"> DDDD page </h1> </div>
+        </div>
+    </div>
+
+    <script>
+      /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+      var dropdown = document.getElementsByClassName("dropdown-btn");
+      var i;
+      
+      for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+        dropdownContent.style.display = "none";
+        } else {
+        dropdownContent.style.display = "block";
+        }
+        });
+      }
+      /* To show content on click*/
+      function toggle(IDS) {
+      var sel = document.getElementById('pg').getElementsByTagName('div');
+      for (var i=0; i<sel.length; i++) { 
+        if (sel[i].id != IDS) { sel[i].style.display = 'none'; }
+      }
+      var status = document.getElementById(IDS).style.display;
+      if (status == 'block') { document.getElementById(IDS).style.display = 'none'; }
+                        else { document.getElementById(IDS).style.display = 'block'; }
+      return false;
+      }
+      </script>
+
+   </body>
+</html>  
